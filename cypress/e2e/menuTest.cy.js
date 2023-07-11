@@ -3,13 +3,17 @@ import loginPage from "../pages/loginPage"
 
 describe('testing2', () => {
   beforeEach(() => {
-    cy.visit('https://www.saucedemo.com/')
+    cy.intercept('/service-worker.js',{
+      body: undefined
   })
- context("Primer prueba", () => {
-  it.only("Se muestran opciones correctas en el menu", () => {
+    cy.clearAllSessionStorage({log:true})
+    cy.visit('https://www.saucedemo.com/')
     loginPage.elements.userName().type("standard_user")
     loginPage.elements.password().type("secret_sauce")
     loginPage.clickOnloginBtn()
+  })
+ context("Primer prueba", () => {
+  it.only("Se muestran opciones correctas en el menu", () => {
     menuPage.clickOnMenuBtn()
     menuPage.elements.allItems().should("exist").contains("All Items")
     menuPage.elements.about().should("exist").contains("About")
@@ -19,9 +23,6 @@ describe('testing2', () => {
 })
 context("Segunda prueba", () => {
   it.only("Se muestra y oculta correctramente el menu", () => {
-    loginPage.elements.userName().type("standard_user")
-    loginPage.elements.password().type("secret_sauce")
-    loginPage.clickOnloginBtn()
     menuPage.clickOnMenuBtn()
     menuPage.clickOnCerrarMenuBtn()
   })

@@ -7,6 +7,8 @@ class productosPage{
         precioBulto : () => cy.getByClass("inventory_item_price"),
         bultoBtn : () => cy.getById("add-to-cart-sauce-labs-backpack"),
         nombreBultoBtn : () => cy.getById("item_4_title_link"),
+        removeBultoBtn : () => cy.getById("remove-sauce-labs-backpack"),
+        carritoBtn : () => cy.getById("shopping_cart_container"),
 
         imgBike : () => cy.getById("item_0_img_link"),
         nombreBike : () => cy.getById("item_0_title_link"),
@@ -35,7 +37,7 @@ class productosPage{
         imgTshirtRed : () => cy.getById("item_3_img_link"),
         nombreTshirtRed : () => cy.getById("item_3_title_link"),
         precioTshirtRed : () => cy.getByClass("inventory_item_price"),
-        tshirtRedBtn : () => cy.getById("add-to-cart-test.allthethings()-t-shirt-(red)"),
+        tshirtRedBtn : () => cy.getById("add-to-cart-test.allthethings\(\)-t-shirt-\(red\)"),
         nombreTshirtRedBtn: () => cy.getById("item_3_title_link"),
 
         backToProducBtn : () => cy.getById("back-to-products")
@@ -79,6 +81,12 @@ class productosPage{
     }
     clickOnNombreTshirtRedBtn(){
         this.elements.nombreTshirtRedBtn().click()
+    }
+    clickOnRemoveBultoBtn(){
+        this.elements.removeBultoBtn().click()
+    }
+    clickOnCarritoBtn(){
+        this.elements.carritoBtn().click()
     }
 
 }
